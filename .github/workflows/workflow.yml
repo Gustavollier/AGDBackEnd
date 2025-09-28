@@ -1,0 +1,30 @@
+name: My Actions
+
+on:
+    push:
+        branches:
+            - master
+
+jobs:
+    echo:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout of code
+              uses: actions/checkout@v4
+            
+            - name: Install of .NET 9
+              uses: actions/setup-dotnet@v4
+              with:
+                dotnet-version: '9.0.x'
+
+            - name: Restore dependencies
+              run: dotnet restore AGDBackEnd/AGDBackEnd.csproj
+
+            - name: Build of application
+              run: dotnet build AGDBackEnd/AGDBackEnd.csproj --configuration Release --no-restore
+
+            - name: Clean of application
+              run: dotnet clean AGDBackEnd/AGDBackEnd.csproj
+              
+            - name: Message of successful build
+              run: echo "Código buildado e limpado com sucesso!"
