@@ -1,0 +1,14 @@
+version: '3.7'
+networks:
+  integration-tests_network:
+    driver: bridge
+services:
+  oracle:    
+    image: 'larmic/oracle-xe:18.4.0'
+    ports:
+     - "1521:1521"
+    environment:
+     ORACLE_ALLOW_REMOTE: "true"
+     ORACLE_PASSWORD: "oracle"
+    networks:
+       - integration-tests_network
