@@ -1,5 +1,5 @@
 <Solution>
-  <Project Path="AGDBackEnd/AGDBackEnd.csproj" />
+  <Project Path="AGDBackEnd/Api.csproj" />
   <Project Path="Application/Application.csproj" />
   <Project Path="Infrastructure/Infrastructure.csproj" />
 </Solution>
