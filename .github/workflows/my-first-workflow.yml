@@ -1,13 +1,14 @@
+name: Workflow
 on: push
 
 jobs: 
     job1:
         runs-on: ubuntu-latest
         steps:
-        - name: Make a message
-        run: echo "Hello, world!"
+         - name: Make a message
+           run: echo "Hello, world!"
     job2:
         runs-on: ubuntu-latest
         steps:
-        - name: Make another message
-        run: echo "This is job 2, running after job 1"
+         - name: Make another message
+           run: echo "This is job 2, running after job 1"
