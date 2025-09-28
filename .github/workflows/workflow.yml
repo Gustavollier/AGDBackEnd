@@ -18,13 +18,13 @@ jobs:
                 dotnet-version: '9.0.x'
 
             - name: Restore dependencies
-              run: dotnet restore AGDBackEnd/AGDBackEnd.csproj
+              run: dotnet restore
 
             - name: Build of application
-              run: dotnet build AGDBackEnd/AGDBackEnd.csproj --configuration Release --no-restore
+              run: dotnet build
 
             - name: Clean of application
-              run: dotnet clean AGDBackEnd/AGDBackEnd.csproj
+              run: dotnet clean
               
             - name: Message of successful build
               run: echo "Código buildado e limpado com sucesso!"
