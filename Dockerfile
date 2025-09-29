@@ -6,7 +6,7 @@ WORKDIR /src
 COPY ["AGDBackEnd/AGDBackEnd.csproj", "AGDBackEnd/"]
 COPY ["Application/Application.csproj", "Application/"]
 COPY ["Infrastructure/Infrastructure.csproj", "Infrastructure/"]
-RUN dotnet restore "AGDBackEnd/AGDBackEnd.csproj"
+RUN dotnet restore
 
 # Copia todo o código-fonte
 COPY . .

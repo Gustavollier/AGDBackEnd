@@ -21,12 +21,12 @@ public class PartnerRepository : IPartnerRepository
         command.CommandText = PartnerQuerys.InsertPartner;
 
         var nomeParameter = command.CreateParameter();
-        nomeParameter.ParameterName = ":nome";
+        nomeParameter.ParameterName = "@nome";
         nomeParameter.Value = body.Nome;
         command.Parameters.Add(nomeParameter);
 
         var emailParameter = command.CreateParameter();
-        emailParameter.ParameterName = ":email";
+        emailParameter.ParameterName = "@email";
         emailParameter.Value = body.Email.Value;
         command.Parameters.Add(emailParameter);
 

@@ -1,14 +1,8 @@
-version: '3.7'
-networks:
-  integration-tests_network:
-    driver: bridge
 services:
-  oracle:    
-    image: 'larmic/oracle-xe:18.4.0'
-    ports:
-     - "1521:1521"
-    environment:
-     ORACLE_ALLOW_REMOTE: "true"
-     ORACLE_PASSWORD: "oracle"
-    networks:
-       - integration-tests_network
+    db:
+        container_name: mysql
+        image: "mysql"
+        ports: 
+            - "3306:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: root_pass
