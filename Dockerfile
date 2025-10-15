@@ -6,14 +6,14 @@ WORKDIR /src
 COPY ["AGDBackEnd/Api.csproj", "AGDBackEnd/"]
 COPY ["Application/Application.csproj", "Application/"]
 COPY ["Infrastructure/Infrastructure.csproj", "Infrastructure/"]
-RUN dotnet restore
+RUN dotnet restore "AGDBackEnd/Api.csproj"
 
 # Copia todo o código-fonte
 COPY . .
 
 # Publica a aplicação
 WORKDIR "/src/AGDBackEnd"
-RUN dotnet publish -c Release -o /app/publish
+RUN dotnet publish "Api.csproj" -c Release -o /app/publish
 
 # Etapa 2: runtime
 FROM mcr.microsoft.com/dotnet/aspnet:9.0
