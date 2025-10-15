@@ -2,16 +2,16 @@
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 
-# Copia os arquivos de projeto e restaura dependências
-COPY ["AGDBackEnd/AGDBackEnd.csproj", "AGDBackEnd/"]
+# Copia os arquivos de projeto e restaura dependÃªncias
+COPY ["AGDBackEnd/Api.csproj", "AGDBackEnd/"]
 COPY ["Application/Application.csproj", "Application/"]
 COPY ["Infrastructure/Infrastructure.csproj", "Infrastructure/"]
 RUN dotnet restore
 
-# Copia todo o código-fonte
+# Copia todo o cÃ³digo-fonte
 COPY . .
 
-# Publica a aplicação
+# Publica a aplicaÃ§Ã£o
 WORKDIR "/src/AGDBackEnd"
 RUN dotnet publish -c Release -o /app/publish
 
@@ -20,9 +20,9 @@ FROM mcr.microsoft.com/dotnet/aspnet:9.0
 WORKDIR /app
 COPY --from=build /app/publish .
 
-# Expõe as portas padrão
+# ExpÃµe as portas padrÃ£o
 EXPOSE 80
 EXPOSE 443
 
-# Inicia a aplicação
-ENTRYPOINT ["dotnet", "AGDBackEnd.dll"]
+# Inicia a aplicaÃ§Ã£o
+ENTRYPOINT ["dotnet", "Api.dll"]
