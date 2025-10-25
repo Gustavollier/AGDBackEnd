@@ -17,6 +17,8 @@ public static class DependencyInversion
     public static void addUseCases(this IServiceCollection services)
     {
         services.AddScoped<IInsertPartnerCase, InsertPartnerCase>();
+        services.AddScoped<IDeletePartnerCase, DeletePartnerCase>();
+        services.AddScoped<IGetPartnerByEmailCase, GetPartnerByEmailCase>();
     }
     public static void addRepository(this IServiceCollection services)
     {

@@ -1,8 +1,9 @@
 ﻿using Application.Models;
-using Application.ResultPattern;
 
 namespace Application.Interface.Data.Repository;
 public interface IPartnerRepository
 {
-    Result InsertAsync(Partner body);
+    void Delete(string email);
+    void Insert(Partner body);
+    Task<Partner?> GetByEmailAsync(string email);
 }

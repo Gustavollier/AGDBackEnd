@@ -1,12 +1,12 @@
 ﻿namespace Application.ResultPattern;
 public class Result
 {
-    public Result(string data, bool isSuccess)
+    public Result(Object data, bool isSuccess)
     {
         Data = data;
         IsSuccess = isSuccess;
     }
 
-    public string Data { get; set; }
+    public Object Data { get; set; }
     public bool IsSuccess { get; set; }
 }

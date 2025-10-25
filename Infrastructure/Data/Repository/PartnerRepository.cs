@@ -1,8 +1,10 @@
 ﻿using Application.Interface.Data.Repository;
 using Application.Models;
 using Application.ResultPattern;
+using Dapper;
 using Infrastructure.Data.Querys;
 using System.Data;
+using System.Text.Json;
 
 namespace Infrastructure.Data.Repository;
 public class PartnerRepository : IPartnerRepository
@@ -14,24 +16,18 @@ public class PartnerRepository : IPartnerRepository
         _dbSession = dbSession;
     }
 
-    public Result InsertAsync(Partner body)
+    public async Task<Partner> GetByEmailAsync(string email)
     {
-        using IDbCommand command = _dbSession.Connection.CreateCommand();
+       return await _dbSession.Connection.QueryFirstOrDefaultAsync<Partner>(PartnerQuerys.GetPartnerByEmail, new { email = email});
+    }
 
-        command.CommandText = PartnerQuerys.InsertPartner;
+    public void Delete(string email)
+    {
+        _dbSession.Connection.Execute(PartnerQuerys.DeletePartner, new { email = email}) ;
+    }
 
-        var nomeParameter = command.CreateParameter();
-        nomeParameter.ParameterName = "@nome";
-        nomeParameter.Value = body.Nome;
-        command.Parameters.Add(nomeParameter);
-
-        var emailParameter = command.CreateParameter();
-        emailParameter.ParameterName = "@email";
-        emailParameter.Value = body.Email.Value;
-        command.Parameters.Add(emailParameter);
-
-        command.ExecuteNonQuery();
-
-        return new Result("Parceiro inserido com sucesso", true);
+    public void Insert(Partner body)
+    {
+        _dbSession.Connection.Execute(PartnerQuerys.InsertPartner, new { nome = body.Nome,email = body.Email});
     }
 }
