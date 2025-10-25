@@ -21,13 +21,7 @@ public class PartnerRepository : IPartnerRepository
        return await _dbSession.Connection.QueryFirstOrDefaultAsync<Partner>(PartnerQuerys.GetPartnerByEmail, new { email = email});
     }
 
-    public Task DeleteAsync(string email)
-    {
-        _dbSession.Connection.ExecuteAsync(PartnerQuerys.DeletePartner, new { email = email}) ;
-    }
+    public async Task DeleteAsync(string email) => await _dbSession.Connection.ExecuteAsync(PartnerQuerys.DeletePartner, new { email = email}) ;
 
-    public Task InsertAsync(Partner body)
-    {
-        _dbSession.Connection.ExecuteAsync(PartnerQuerys.InsertPartner, new { nome = body.Nome,email = body.Email});
-    }
+    public async Task InsertAsync(Partner body) => await _dbSession.Connection.ExecuteAsync(PartnerQuerys.InsertPartner, new { nome = body.Nome,email = body.Email}); 
 }
