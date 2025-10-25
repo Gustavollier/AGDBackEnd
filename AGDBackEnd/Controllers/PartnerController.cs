@@ -63,11 +63,11 @@ public class PartnerController : ControllerBase
     }
 
     [HttpDelete("{email}")]
-    public IActionResult DeletePartner([FromRoute][RegularExpression(Constantes.RegexEmail, ErrorMessage = "O email infomado deve ser valido")] string email)
+    public async Task<IActionResult> DeletePartner([FromRoute][RegularExpression(Constantes.RegexEmail, ErrorMessage = "O email infomado deve ser valido")] string email)
     {
         try
         {
-            Result result = _deletePartnerCase.Execute(email);
+            Result result = await _deletePartnerCase.ExecuteAsync(email);
 
             if (result.IsSuccess)
                 return Ok(result.Data);

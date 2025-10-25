@@ -21,13 +21,13 @@ public class PartnerRepository : IPartnerRepository
        return await _dbSession.Connection.QueryFirstOrDefaultAsync<Partner>(PartnerQuerys.GetPartnerByEmail, new { email = email});
     }
 
-    public void Delete(string email)
+    public Task DeleteAsync(string email)
     {
-        _dbSession.Connection.Execute(PartnerQuerys.DeletePartner, new { email = email}) ;
+        _dbSession.Connection.ExecuteAsync(PartnerQuerys.DeletePartner, new { email = email}) ;
     }
 
-    public void Insert(Partner body)
+    public Task InsertAsync(Partner body)
     {
-        _dbSession.Connection.Execute(PartnerQuerys.InsertPartner, new { nome = body.Nome,email = body.Email});
+        _dbSession.Connection.ExecuteAsync(PartnerQuerys.InsertPartner, new { nome = body.Nome,email = body.Email});
     }
 }

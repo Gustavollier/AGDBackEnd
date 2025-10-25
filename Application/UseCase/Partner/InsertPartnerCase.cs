@@ -23,7 +23,7 @@ public class InsertPartnerCase : IInsertPartnerCase
         if (await _partnerRepository.GetByEmailAsync(body.Email) is not null)
             return new Result("Já existe um parceiro com o email informado", false);
 
-        _partnerRepository.Insert(body);
+        await _partnerRepository.InsertAsync(body);
 
         return new Result("Perceiro inserido com sucesso",true);
     }

@@ -12,9 +12,9 @@ public class DeletePartnerCase : IDeletePartnerCase
         _partnerRepository = partnerRepository;
     }
 
-    public Result Execute(string email)
+    public async Task<Result> ExecuteAsync(string email)
     {
-        _partnerRepository.Delete(email);
+        await _partnerRepository.DeleteAsync(email);
 
         return new Result("Parceiro deletado com sucesso", true);
     }
