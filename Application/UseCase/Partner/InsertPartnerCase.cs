@@ -25,6 +25,6 @@ public class InsertPartnerCase : IInsertPartnerCase
 
         await _partnerRepository.InsertAsync(body);
 
-        return new Result("Perceiro inserido com sucesso",true);
+        return new Result("Parceiro inserido com sucesso",true);
     }
 }

@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="AGDBackEnd/Api.csproj" />
   <Project Path="Application/Application.csproj" />
+  <Project Path="FunctionalsTests/FunctionalsTests.csproj" Id="f6719fcb-0d0e-40b5-992e-9d8966936b5e" />
   <Project Path="Infrastructure/Infrastructure.csproj" />
 </Solution>
