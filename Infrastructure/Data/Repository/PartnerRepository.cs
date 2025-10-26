@@ -1,10 +1,7 @@
 ﻿using Application.Interface.Data.Repository;
 using Application.Models;
-using Application.ResultPattern;
 using Dapper;
 using Infrastructure.Data.Querys;
-using System.Data;
-using System.Text.Json;
 
 namespace Infrastructure.Data.Repository;
 public class PartnerRepository : IPartnerRepository

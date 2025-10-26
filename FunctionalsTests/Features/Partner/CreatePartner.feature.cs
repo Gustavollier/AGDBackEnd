@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace FunctionalsTests.Features
+namespace FunctionalsTests.Features.Partner
 {
     using TechTalk.SpecFlow;
     using System;
@@ -40,7 +40,7 @@ namespace FunctionalsTests.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("pt"), "Features", "POST partner", null, ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("pt"), "Features/Partner", "POST partner", null, ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -136,12 +136,46 @@ namespace FunctionalsTests.Features
     testRunner.Given("que eu queira adicionar um novo parceiro", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
 #line hidden
 #line 12
-    testRunner.When("eu chamar o endpoint de criação de parceiro passando o email \"TESTE@GMAIL.COM\" e " +
-                        "o usuario \"TESTE\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
+    testRunner.When("eu chamar o endpoint de criação de parceiro passando o email \"exemplo@gmail.com\" " +
+                        "e o usuario \"Tomaz Gouveia\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
 #line hidden
 #line 13
     testRunner.Then("eu devo receber o status \"BadRequest\" e a mensagem \"Já existe um parceiro com o e" +
                         "mail informado\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Criar um parceiro com email invalido")]
+        [Xunit.TraitAttribute("FeatureTitle", "POST partner")]
+        [Xunit.TraitAttribute("Description", "Criar um parceiro com email invalido")]
+        [Xunit.TraitAttribute("Category", "regressivo")]
+        public void CriarUmParceiroComEmailInvalido()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "regressivo"};
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Criar um parceiro com email invalido", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 16
+  this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 17
+    testRunner.Given("que eu queira adicionar um novo parceiro", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
+#line hidden
+#line 18
+    testRunner.When("eu chamar o endpoint de criação de parceiro passando o email \"TESTEGMAIL.COM\" e o" +
+                        " usuario \"TESTE\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
+#line hidden
+#line 19
+    testRunner.Then("eu devo receber o status \"BadRequest\" e a mensagem \"Email invalido\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
 #line hidden
             }
             this.ScenarioCleanup();

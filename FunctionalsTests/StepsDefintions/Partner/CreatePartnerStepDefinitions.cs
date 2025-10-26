@@ -1,15 +1,9 @@
-﻿using Application.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Net;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using TechTalk.SpecFlow;
 
-namespace FunctionalsTests.StepsDefintions;
+namespace FunctionalsTests.StepsDefintions.Partner;
 
 [Binding]
 public class CreatePartnerStepDefinitions
@@ -18,7 +12,7 @@ public class CreatePartnerStepDefinitions
     private HttpResponseMessage _httpResponseMessage;
     public CreatePartnerStepDefinitions()
     {
-        _httpClient = new() { BaseAddress = new Uri("http://localhost:5280") };
+        _httpClient = new ApplicationFactory().CreateClient();
     }
 
     [Given(@"que eu queira adicionar um novo parceiro")]
@@ -39,19 +33,17 @@ public class CreatePartnerStepDefinitions
 
     private async Task Send(string email, string nome)
     {
-        string content = JsonSerializer.Serialize(new Partner() { Email = email, Nome = nome });
+        string content = JsonSerializer.Serialize(new Application.Models.Partner() { Email = email, Nome = nome });
 
         StringContent body = new(content, Encoding.UTF8, "application/json");
 
         _httpResponseMessage = await _httpClient.PostAsync("/Partner", body);
     }
-
     [AfterFeature]
-    public static async Task DeletePartnerOfTest()
+    public static void DeletePartnerOfTest()
     {
-        HttpClient httpClient = new() { BaseAddress = new Uri("http://localhost:5280") };
+        HttpClient httpClient = new ApplicationFactory().CreateClient();
 
-        await httpClient.DeleteAsync("Partner/TESTE@GMAIL.COM");
+        httpClient.DeleteAsync("Partner/TESTE@GMAIL.COM");
     }
-
 }
